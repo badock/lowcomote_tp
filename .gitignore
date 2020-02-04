@@ -2,6 +2,8 @@
 .sass-cache/
 Gemfile.lock
 _site/
+.DS_Store
+*~
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
