@@ -1,5 +1,5 @@
 ---
-title: Session 9 - Pages dynamiques avec Javascript
+<!-- title: Session 9 - Pages dynamiques avec Javascript -->
 excerpt: ""
 order: 9
 ---

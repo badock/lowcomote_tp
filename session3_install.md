@@ -99,10 +99,10 @@ vivement de vous faire un compte sur Github, et de l'utiliser pour
 héberger vos futurs projets de développement logiciels.
 
 Le projet d'exemple est hébergé sur Github:
-[https://github.com/badock/FlaskSar2019ExampleApp/tree/session0](https://github.com/badock/FlaskSar2019ExampleApp/tree/session0)
+[https://github.com/badock/ue_web_2020_example/tree/session0](https://github.com/badock/ue_web_2020_example/tree/session0)
 
 Github permet de récupérer une archive de ce projet:
-[https://github.com/badock/FlaskSar2019ExampleApp/archive/session0.zip](https://github.com/badock/FlaskSar2019ExampleApp/archive/session0.zip)
+[https://github.com/badock/ue_web_2020_example/archive/session0.zip](https://github.com/badock/ue_web_2020_example/archive/session0.zip)
 
 Nous vous demandons de:
 1. Télécharger l'archive ZIP via le lien précédent

@@ -7,23 +7,23 @@ order: 0
 
 # Programmation d'une application web avec Flask
 
-**Soutenances en B218 !**
+<!-- **Soutenances en B218 !** -->
 
 ## Planning
 
-| Séance           | Contenu             |
-|------------------|---------------------|
-| Vendredi 17 mai  | Sessions 1, 2, 3, 4 |
-| Lundi 20 mai     | Sessions 5, 6       |
-| Vendredi 24 mai  | Sessions 7, 8       |
-| Lundi 3 juin     | SSG                 |
-| Vendredi 7 juin  | Session 9           |
-| Mercredi 12 juin | Suivi de projet     |
-| Vendredi 14 juin | Suivi de projet     |
-| Vendredi 21 juin | Suivi de projet     |
-| Lundi 24 juin    | Évaluation          |
+| Séance   | Contenu                |
+|----------|------------------------|
+| séance 1 | Sessions 1, 2, 3, 4    |
+| séance 2 | Sessions 4, 5, 6, 7, 8 |
+| séance 3 | projet                 |
+| séance 4 | projet                 |
 
-## Contact
+## Enseignants
+
+- Adrien Lebre : adrien.lebre@imt-atlantique.fr
+- Jonathan Pastor : jonathan.pastor@imt-atlantique.fr
+
+## Auteurs du cours
 
 - Maverick Chardet : maverick.chardet@inria.fr
 - Adrien Lebre : adrien.lebre@imt-atlantique.fr

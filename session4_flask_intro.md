@@ -215,7 +215,7 @@ Dans cette section nous allons voir comment renvoyer une réponse HTML
 
 
 Tout d'abord, récupérer une archive de code
-[session_4_engineer_view.zip](https://github.com/badock/FlaskSar2019ExampleApp/archive/session_4_engineer_view.zip)
+[session_4_engineer_view.zip](https://github.com/badock/ue_web_2020_example/archive/session_4_engineer_view.zip)
 contenant un projet qui servira de base pour cet exercice. 
 
 Ce TP contient une base de données pour stocker les données. Entre

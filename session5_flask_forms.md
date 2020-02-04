@@ -72,7 +72,7 @@ de son évaluation sera affiché comme suit:
 <!-- **formulaires**, en suivant les [instructions -->
 <!-- suivantes](git.html#r%C3%A9cup%C3%A9rer-le-code-dune-branche-git-avec-pycharm). -->
 
-Avec votre navigateur, cliquez sur ce [lien (vers formulaires.zip)](https://github.com/badock/FlaskSar2019ExampleApp/archive/formulaires.zip) pour récupérer une archive ZIP du [dépôt formulaires](https://github.com/badock/FlaskSar2019ExampleApp/tree/formulaires) permettant de démarrer cet exercice.
+Avec votre navigateur, cliquez sur ce [lien (vers formulaires.zip)](https://github.com/badock/ue_web_2020_example/archive/formulaires.zip) pour récupérer une archive ZIP du [dépôt formulaires](https://github.com/badock/ue_web_2020_example/tree/formulaires) permettant de démarrer cet exercice.
 
 Ce projet une application Flask basique qu'il faudra compléter.
 
@@ -246,9 +246,9 @@ operator = StringField('Operator', validators=[DataRequired(), operator_check])
 <!-- suivantes](git.html#r%C3%A9cup%C3%A9rer-le-code-dune-branche-git-avec-pycharm). -->
 
 Avec votre navigateur, cliquez sur ce [lien (vers
-TP1_formulaires.zip)](https://github.com/badock/FlaskSar2019ExampleApp/archive/TP1_formulaires.zip)
+TP1_formulaires.zip)](https://github.com/badock/ue_web_2020_example/archive/TP1_formulaires.zip)
 pour récupérer une archive ZIP du dépôt
-[TP1_formulaires](https://github.com/badock/FlaskSar2019ExampleApp/tree/TP1_formulaires)
+[TP1_formulaires](https://github.com/badock/ue_web_2020_example/tree/TP1_formulaires)
 permettant de démarrer cet exercice.
 
 Le projet que vous venez de récupérer est un projet Flask complet qui
