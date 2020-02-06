@@ -11,7 +11,13 @@ Docker is a project that enables to run applications in a isolated environments.
 
 # Docker : quick reminder
 
-TODO
+With Docker, applications run inside containers which are based on
+images. An image is composed of several immutable layers
+(i.e. intermediate images). Data inside a container is stored on an
+Union file system which stores the difference between the running file
+system and the base image. It is possible to specify volumes, which
+contains data stored outside the Union file system, on the host's file
+system.
 
 # Toward running a service with Docker
 
@@ -34,31 +40,31 @@ Commands:
 ```
 
 Now, we will see container in action by deploying in the virtual
-machine an instance of Gitlab, a famous opensource project that
+machine an instance of Gogs, a lightweight opensource project that
 provides a web interface to [git](https://en.wikipedia.org/wiki/Git)
 (a distributed version-control system).
 
 ### Images
 
 Docker images are stored in Images repositories such as [Docker
-Hub](https://hub.docker.com). In this Section we will work with a
-gitlab image hosted on the [gitlab's section of Docker
-hub](https://hub.docker.com/u/gitlab).
+Hub](https://hub.docker.com). In this Section we will work with an
+image og the [Gogs](https://gogs.io/) hosted on the [Gogs' section of
+Docker hub](https://hub.docker.com/r/gogs/gogs).
 
 First we need to pull a docker image from a repository:
 ```bash
-docker pull gitlab/gitlab-ce
+sudo docker pull gogs/gogs
 ```
 
 It should download the image as in the recording below:
 
-<script id="asciicast-298563" src="https://asciinema.org/a/298563.js" async></script>
+<script id="asciicast-d40ZUUJeyD5MkT2bYemHyAllg" data-size="small" data-cols="80" data-rows="30" src="https://asciinema.org/a/d40ZUUJeyD5MkT2bYemHyAllg.js" async></script>
 
 Now we can list the images stored on the virtual machine with the `docker image ls` command (**it requires super user privileges**):
 ```bash
 lowcomote@lowcomote-VirtualBox:~$ sudo docker image ls
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-gitlab/gitlab-ce    latest              13d9da61e07d        5 days ago          1.85GB
+gogs/gogs           latest              a14b25251c6c        2 days ago          102MB
 ```
 
 Please note that there exist many actions on images. You can get a glimpse of these commands by running `docker image help`:
@@ -95,72 +101,77 @@ In this Section we will see how containers can be launched with Docker.
 We can start an instance of the gitlab image by running the following command:
 ```bash
 sudo docker run --detach \
-  --publish 8080:80 \
-  --name gitlab \
-  gitlab/gitlab-ce:latest
+  --name=gogs \
+  -p 8022:22 -p 8080:3000 \
+  gogs/gogs
 ```
 
 
 The complete ID of the newly created container should appear below. In my case, it was:
 ```bash
-3be5d76cb859f7fdcb0bea7e396c7f4d170d92726cfd465630ea39d8014d4a3a
+830928e7fceb66ae318372fd96378092b6f8ccad009bcadff47cb3a71c2db311
 ```
 
 
 To see the running containers, we can run the command `sudo docker ps`: we can notice that the newly created container appears!
 ```bash
 lowcomote@lowcomote-VirtualBox:~/omnibus-gitlab/docker$ sudo docker ps
-CONTAINER ID        IMAGE                     COMMAND             CREATED             STATUS                            PORTS                                                               NAMES
-3be5d76cb859        gitlab/gitlab-ce:latest   "/assets/wrapper"   8 seconds ago       Up 6 seconds (health: starting)   0.0.0.0:8022->22/tcp, 0.0.0.0:8080->80/tcp, 0.0.0.0:8443->443/tcp   gitlab
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                                          NAMES
+830928e7fceb        gogs/gogs           "/app/gogs/docker/st…"   7 seconds ago       Up 4 seconds        0.0.0.0:8022->22/tcp, 0.0.0.0:8080->3000/tcp   gogs
 ```
 
-After few minutes, you should be able to access to gitlab using an URL like `http://<ip_of_the_vm>:8080/` as in the following screenshot:
+You can review the progress of the container startup by running `sudo docker logs -f gitlab`
 
+After a few moment, you should be able to access to **Gogs** using an URL like `http://<ip_of_the_vm>:8080/` as in the following screenshot:
+![/assets/img/session2/gogs1.png](/assets/img/session2/gogs1.png)
+
+Do the following configuration actions:
+- Select `SQLite3` in the **Database Type** parameter
+- Put `http://<ip_of_the_vm>:8080/` in the ***Application URL*** parameter
+- Unfold the `Admin Account Settings` and decide the credentials of the root account
+
+Proceed with the install. It should result in the following page:
+![/assets/img/session2/gogs2.png](/assets/img/session2/gogs2.png)
 
 Now you can delete the container using the following command
 ```bash
-docker kill gitlab
+docker kill gogs
 ```
 
 It is possible to rerun the container with the following command:
 ```bash
-docker start gitlab
+docker start gogs
 ```
 
 To destroy a stopped container, run the following command:
 It is possible to rerun the container with the following command:
 ```bash
-docker rm gitlab
+docker rm gogs
 ```
 
 ## Volumes
 
-A Docker container is not persistent: at destruction all its files are lost, which in the case of gitlab means that if you destroy a running instance of gitlab, you may lose all the source codes hosted on gitlab. To handle the case where some data needs to be persistent, Docker provides the `Volumes` mecanism : it maps folders from the physical host to folders of the container, similarly to shared folders with VirtualBox.
+Data inside a docker container is not meant to be persistent: at destruction all its files are lost, which in the case of **Gogs** means that the git repositories would be lost. To handle the case where some data needs to be persistent, Docker provides `Volumes` which can be used to specify which folders should be excluded from the *Union file system*. Docker volumes are stored on the host file system in the `/var/lib/docker/volumes` folder.
 
-Volumes can be specified in the Dockerfile or by passing arguments in the form `--volume host_folder_path:container_folder_path`.
+Volumes can be specified in the Dockerfile or by passing arguments in the form `--volume host_folder_path:container_folder_path`. There are two advantages of specifying a local folder for the volume:
+- It is easier to access the data from the host
+- It is possible to share data between containers
+- When a container is destroyed and recreated, the data in the volume will be reused
 
-To make the gitlabe container persistent, lets recreate a new gitlab container by specifying volumes:
+To make the gitlabe container persistent, lets recreate a new **Gogs** container by specifying volumes:
 
 ```bash
 sudo docker run --detach \
-  --publish 8080:80 \
-  --name gitlab \
-  --volume /srv/gitlab/config:/etc/gitlab \
-  --volume /srv/gitlab/logs:/var/log/gitlab \
-  --volume /srv/gitlab/data:/var/opt/gitlab \
-  gitlab/gitlab-ce:latest
+  --name=gogs \
+  -p 8022:22 -p 8080:3000 \
+  -v /var/gogs:/data \
+  gogs/gogs
 ```
 
-Change the root password in the gitlab welcome screen, destroy the container, and recreate it with the volumes : the data should have been preserved!
 
-Also please note that when the container has been destroyed, the date remains on the physical host:
-```bash
-lowcomote@lowcomote-VirtualBox:~/omnibus-gitlab/docker$ ls /srv/gitlab/
-config  data  logs
-```
 
 ## Towards building your own docker image
 
-It is interesting to understand how the Gitlab's Docker image is produced. The files required to build the image are located at [https://gitlab.com/gitlab-org/omnibus-gitlab/tree/master/docker](https://gitlab.com/gitlab-org/omnibus-gitlab/tree/master/docker). In this folder we can remark that there is a `Dockerfile` file : this file contains all the instructions to build the docker image.
+It is interesting to understand how the **Gogs** Docker image is produced. The files required to build the image are located at [https://github.com/gogs/gogs](https://github.com/gogs/gogs). In this folder we can remark that there is a `Dockerfile` file : this file contains all the instructions to build the docker image.
 
 The `Dockerfile` is the file that contains the instructions that must be run to build an image. In [Session 4](session4_package_and_run.html) we will see how to use `Dockerfile` files to package our own software.

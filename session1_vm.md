@@ -67,7 +67,7 @@ Click on the __ubuntu_cours_madrid__ virtual machine and then click on the __Sta
 A new window depicting the output of the virtual machine should appear: the virtual machine is booting up:
 ![/assets/img/session1/launch2.png](/assets/img/session1/launch2.png)
 
-Once booted, you can interract with the virtual machin as it was a classic computer.
+Once booted, you can interract with the virtual machine as it was a classic computer.
 
 ![/assets/img/session1/launch3.png](/assets/img/session1/launch3.png)
 
