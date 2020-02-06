@@ -51,10 +51,10 @@ Hellworld!
 Now, connect to your VM and run the following commands:
 
 ```bash
-lowcomote@lowcomote-VirtualBox:~$ cd /workspace/
-lowcomote@lowcomote-VirtualBox:/workspace$ ls
+lowcomote@lowcomote-VirtualBox:~$ cd workspace/
+lowcomote@lowcomote-VirtualBox:~/workspace$ ls
 bin  src
-lowcomote@lowcomote-VirtualBox:/workspace$ java -classpath "bin/" Helloworld
+lowcomote@lowcomote-VirtualBox:~/workspace$ java -classpath "bin/" Helloworld
 Hellworld!
 
 ```
@@ -62,7 +62,7 @@ Hellworld!
 We will now launch the same program with debug options activated. This time java will wait for a debugger to connect to a network port, and then launch the program:
 
 ```bash
-lowcomote@lowcomote-VirtualBox:/workspace$ java -classpath "bin/" -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=*:8000 Helloworld 
+lowcomote@lowcomote-VirtualBox:~/workspace$ java -classpath "bin/" -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=*:8000 Helloworld 
 Listening for transport dt_socket at address: 8000
 ```
 
@@ -74,7 +74,7 @@ Warning
 You can get the ip address of the virtual machine by the running the following command in a terminal
 
 ```bash
-lowcomote@lowcomote-VirtualBox:/workspace$ ip a
+lowcomote@lowcomote-VirtualBox:~/workspace$ ip a
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
@@ -121,7 +121,7 @@ Clicking on the __Resume__ icon will resume the execution.
 The following should have appeared in the console of the virtual machine:
 
 ```bash
-lowcomote@lowcomote-VirtualBox:/workspace$ java -classpath "bin/" -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=*:8000 Helloworld 
+lowcomote@lowcomote-VirtualBox:~/workspace$ java -classpath "bin/" -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=*:8000 Helloworld 
 Listening for transport dt_socket at address: 8000
 Hellworld!
 ```
@@ -159,7 +159,7 @@ given to java and use `suspend=n`. With this option, the execution of
 the Helloworld program will not wait for the connection of a debugger:
 
 ```bash
-lowcomote@lowcomote-VirtualBox:/workspace$ java -classpath "bin/" -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8000 Helloworld
+lowcomote@lowcomote-VirtualBox:~/workspace$ java -classpath "bin/" -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8000 Helloworld
 ```
 
 Now, add a breaking point in front of the

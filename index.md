@@ -5,26 +5,24 @@ excerpt: ""
 order: 0
 ---
 
-# Programmation d'une application web avec Flask
+# Practical session on virtual machines and containers
 
 <!-- **Soutenances en B218 !** -->
 
 ## Planning
 
-| Séance   | Contenu                |
-|----------|------------------------|
-| séance 1 | Sessions 1, 2, 3, 4    |
-| séance 2 | Sessions 4, 5, 6, 7, 8 |
-| séance 3 | projet                 |
-| séance 4 | projet                 |
+| Session   | Content                                                |
+|-----------|--------------------------------------------------------|
+| session 1 | Getting started with virtual machines                  |
+| session 2 | Getting started with Docker                            |
+| session 3 | Building a Java program that runs in a virtual machine |
+| session 4 | Packaging a Java program to run in Docker              |
 
-## Enseignants
+## Animator
 
-- Adrien Lebre : adrien.lebre@imt-atlantique.fr
 - Jonathan Pastor : jonathan.pastor@imt-atlantique.fr
 
-## Auteurs du cours
+## Authors
 
-- Maverick Chardet : maverick.chardet@inria.fr
-- Adrien Lebre : adrien.lebre@imt-atlantique.fr
+- Hélène Coullon : helene.coullon@imt-atlantique.fr
 - Jonathan Pastor : jonathan.pastor@imt-atlantique.fr

@@ -85,3 +85,12 @@ following screenshot:
 
 ![/assets/img/session1/shared1.png](/assets/img/session1/shared1.png)
 
+Use the following parameters:
+
+- ***Folder path***: a folder on your computer. Here are valid examples of shared folders:
+    + In Linux it may be something like `/home/<username>/shared_folder`.
+    + In macOS it may be something like `/Users/<username>/shared_folder`.
+    + In windows it may be `C:/shared_folder`.
+- ***Folder name***: use the `shared_folder` value
+- ***Automount***: select this option to ensure that the shared folder is activated when the virtual machine is run.
+- ***Mount Point***: use `/home/lowcomote/workspace`.
