@@ -75,8 +75,36 @@ Run a local registry on the virtual machine:
 docker run -d -p 5000:5000 --restart=always --name registry registry:2
 ```
 
+To upload the `lowcomote` image to the private repository, we will now tag it with its hostname and port:
+```
+docker tag lowcomote localhost:5000/lowcomote
+```
 
-Pull an image from a third party repository:
+Once the tagging is done, we can push the image to the private repository:
+```bash
+docker push localhost:5000/lowcomote
+```
+
+You can try to pull the image from the local repository as follow:
 ```bash
 docker pull localhost:5000/lowcomote
+```
+
+Now, aks your neighbour for his IP address. Let's call it `MY_NEIGHBOUR_IP`, let's grab its version of the `lowcomote` image:
+```bash
+MY_NEIGHBOUR_IP=192.168.1.25
+docker pull $MY_NEIGHBOUR_IP:5000/lowcomote
+```
+
+The image should have been downloaded correctly:
+```bash
+root@lowcomote-VirtualBox:/home/lowcomote# docker image ls
+REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE
+192.168.1.25:5000/lowcomote   latest              d4178dde65ba        29 hours ago        413MB
+```
+
+You can run your neighbour's image as follow:
+```bash
+MY_NEIGHBOUR_IP=192.168.1.25
+docker run --detach -p 8000:8000 --name lowcomote $MY_NEIGHBOUR_IP:5000/lowcomote
 ```
