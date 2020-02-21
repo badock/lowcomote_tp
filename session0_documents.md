@@ -13,3 +13,5 @@ order: 8
 [Presentation 3: Virtualization of IT resources](assets/pdf/virtualization_of_IT_resources.pdf)
 
 [Presentation 4: The Cloud computing paradigm](assets/pdf/the_Cloud_computing_paradigm.pdf)
+
+[Public folder](http://172.17.6.116:8000/)
