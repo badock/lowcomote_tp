@@ -98,7 +98,7 @@ In this Section we will see how containers can be launched with Docker.
 
 ## Running a container based on an image
 
-We can start an instance of the gitlab image by running the following command:
+We can start an instance of the gogs image by running the following command:
 ```bash
 sudo docker run --detach \
   --name=gogs \
@@ -120,7 +120,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 830928e7fceb        gogs/gogs           "/app/gogs/docker/st…"   7 seconds ago       Up 4 seconds        0.0.0.0:8022->22/tcp, 0.0.0.0:8080->3000/tcp   gogs
 ```
 
-You can review the progress of the container startup by running `sudo docker logs -f gitlab`
+You can review the progress of the container startup by running `sudo docker logs -f gogs`
 
 After a few moment, you should be able to access to **Gogs** using an URL like `http://<ip_of_the_vm>:8080/` as in the following screenshot:
 ![/assets/img/session2/gogs1.png](/assets/img/session2/gogs1.png)
@@ -158,7 +158,7 @@ Volumes can be specified in the Dockerfile or by passing arguments in the form `
 - It is possible to share data between containers
 - When a container is destroyed and recreated, the data in the volume will be reused
 
-To make the gitlabe container persistent, lets recreate a new **Gogs** container by specifying volumes:
+To make the gogs container persistent, lets recreate a new **Gogs** container by specifying volumes:
 
 ```bash
 sudo docker run --detach \
