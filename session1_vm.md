@@ -20,6 +20,9 @@ A virtual machine is the emulation of a computer system that runs on a real comp
 
 For this set of sessions we have chosen to use the [VirtualBox](https://www.virtualbox.org/) hypervisor. VirtualBox is an opensource virtual machine hypervisor currently developed by Oracle.
 
+Warning : It is strongly advised that you enable the hardware virtualization in the BIOS of your computer.
+{: .label .label-red }
+
 ## Installation of VirtualBox
 
 Browse to the [Download virtual box](https://www.virtualbox.org/wiki/Downloads) page, click on the link corresponding to your Operating System and proceed with the installation.
@@ -31,7 +34,7 @@ Browse to the [Download virtual box](https://www.virtualbox.org/wiki/Downloads) 
 
 Once installed, launch VirtualBox. You should get something similar to the screenshot below:
 
-[empty VirtualBox](/assets/img/session1/empty_vbox.png)
+![empty VirtualBox](/assets/img/session1/empty_vbox.png)
 
 ## Importing a virtual machine with VirtualBox
 
@@ -55,6 +58,15 @@ Once the import is finished, the virtual machine should appear in VirtualBox:
 # Common operations with virtual machines
 
 ## Configuring the VM network
+
+Access the properties of the VM, and configure a network interface as follow:
+
+- ***Enable Network Adapter***: checked
+- ***Attached to***: Bridged adapter
+- ***Name***: Select the main network interface of your computer (wifi)
+- ***Advanced properties***: Reset the mac address by clicking on the `Generate a new random mac address` icon, as in the following screenshot: ![/assets/img/session1/reset_mac_address.png](/assets/img/session1/reset_mac_address.png)
+
+And click on *OK*
 
 ![/assets/img/session1/configure1.png](/assets/img/session1/configure1.png)
 
